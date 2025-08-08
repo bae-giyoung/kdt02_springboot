@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.pnu.persistence.mapper.BoardMapper">
+	<resultMap id="boardResultMap" type="edu.pnu.domain.Board">
+		<id property="seq" column="seq"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="writer" column="writer"/>
+		<result property="createDate" column="create_date"/>
+		<result property="cnt" column="cnt"/>
+	</resultMap>
+	<select id="getBoardAllList" resultMap="boardResultMap">
+		SELECT * FROM BOARD
+	</select>
+	<select id="getBoardList" resultMap="boardResultMap">
+		SELECT * FROM BOARD WHERE 1 = 1
+	<if test="cond.toUpperCase() == 'TITLE'">
+		AND TITLE LIKE '%'||#{keyword}||'%'
+	</if>
+	<if test="cond.toUpperCase() == 'CONTENT'">
+		AND CONTENT LIKE '%'||#{keyword}||'%'
+	</if>
+	</select>
+	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="seq">
+		INSERT INTO Board (title, content, writer, create_date, cnt)
+		VALUES (#{title}, #{content}, #{writer}, #{createDate}, 0)
+	</insert>
+</mapper>
