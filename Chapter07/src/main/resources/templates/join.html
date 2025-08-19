@@ -5,18 +5,19 @@
 <title>회원가입 페이지</title>
 <script>
 function validateFrm(frm) {
+	console.log(frm);
 	if(!frm.id.value) {
-		alert("id를 입력하세요");
+		alert("아이디를 입력하세요");
 		return false;
 	}
 	
 	if(!frm.password.value) {
-		alert("password를 입력하세요");
+		alert("비밀번호를 입력하세요");
 		return false;
 	}
 	
 	if(!frm.name.value) {
-		alert("name을 입력하세요");
+		alert("닉네임을 입력하세요");
 		return false;
 	}
 	
@@ -36,7 +37,7 @@ function validateFrm(frm) {
 		<label for="name">닉네임: </label>
 		<input type="text" name="name" id="name" />
 		
-		<button type="submit">확인</button>
+		<button type="submit" onclick="return validateFrm(this.form);">확인</button>
 	</form>
 </body>
 </html>
