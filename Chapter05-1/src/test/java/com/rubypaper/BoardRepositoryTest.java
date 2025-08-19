@@ -23,7 +23,7 @@ public class BoardRepositoryTest {
 	public void testInsertBoard() {
 		Board board = new Board();
 		board.setTitle("두 번째 게시글");
-		board.setWriter("터스터");
+		//board.setWriter("터스터");
 		board.setContent("잘 등록되나요?");
 		board.setCreateDate(new Date());
 		board.setCnt(0L);

@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+.container{
+	text-align:center;
+}
+.container table {
+	margin: 0 auto;
+	width: 700px;
+	border-collapse: collapse;
+}
+.container th,tr,td {
+	border: 1px solid black;
+	padding: 0;
+}

@@ -62,4 +62,9 @@ public class BoardController {
 		return "redirect:getBoardList";
 	}
 	
+	@GetMapping("/hello")
+	public void hello(Model model) {
+		model.addAttribute("greeting", "HEllo 타임리프!");
+	}
+	
 }

@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.rubypaper</groupId>
-	<artifactId>Chapter06-1</artifactId>
+	<artifactId>Chapter06-2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Chapter06</name>
 	<description>Demo project for Spring Boot</description>

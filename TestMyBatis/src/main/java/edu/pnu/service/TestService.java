@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import edu.pnu.domain.Board;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -26,6 +27,11 @@ public class TestService {
 		sb.append(" ORDER BY b.id ASC");
 		
 		// 질의 객체 생성
-		TypedQuery<Board> query = em.createQuery();
+		TypedQuery<Board> query = em.createQuery(sb.toString(), Board.class);
+		
+		query.setFirstResult(0); // 페이징 시작 위치(0-based)
+		query.setMaxResults(5); // 페이지 사이즈
+		
+		return query.getResultList(); // 데이터베이스 연결 및 질의 실행
 	}
 }
