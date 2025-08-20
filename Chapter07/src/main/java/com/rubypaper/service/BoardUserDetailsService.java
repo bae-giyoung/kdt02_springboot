@@ -12,13 +12,13 @@ import org.springframework.stereotype.Service;
 
 import com.rubypaper.persistence.MemberRepository;
 
+// UserDetailsService 구현체를 스프링 컨테이너에 등록하면 서버가 자동 생성 패스워드를 만들지 않는다.
 @Service
 public class BoardUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private MemberRepository memberRepo;
 
-	// 여기서 반환하는 UserDetails 타입의 인스턴스가 IOC Container에 올라가면 자동 생성 암호가 나타나지 않는다.
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
