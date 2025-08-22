@@ -33,7 +33,7 @@ public class JWTUtil {
 	// 유효기간 만료 여부
 	public static boolean isExpired(String token) {
 		String tok = getJWTSource(token);
-		return JWT.require(Algorithm.HMAC256(JWT_KEY)).build().verify(token).getExpiresAt().before(new Date());
+		return JWT.require(Algorithm.HMAC256(JWT_KEY)).build().verify(tok).getExpiresAt().before(new Date()); // token->tok 바꾸고서 test 안해봄. test 필요.
 	}
 
 }
