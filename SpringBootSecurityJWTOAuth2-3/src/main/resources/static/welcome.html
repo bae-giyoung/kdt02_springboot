@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Welcome</title>
+<link type="text/css" rel="stylesheet" href="./css/welcome.css">
+<script type="text/javascript">
+//페이지 로드 시 토큰 확인
+document.addEventListener("DOMContentLoaded", function() {
+	const token = sessionStorage.getItem("jwtToken");
+	//const username = sessionStorage.getItem("username"); ?? 어디에 사용???
+	
+	// 토큰이 없으면 로그인 페이지로 리다이렉트
+	if(!token) {
+		alert("로그인이 필요합니다.");
+		window.location.href = "./login.html";
+		return;
+	}
+});
+
+function logout() {
+	if(confirm("정말 로그아웃 하시겠습니까?")) {
+		sessionStorage.removeItem("jwtToken");
+		alert("로그아웃 되었습니다.");
+		window.location.href = "./login.html";
+	}
+}
+</script>
+</head>
+<body>
+	<div class="welcome-container">
+		<div class="header">
+			<h1 id="welcomeMessage">환영합니다!</h1>
+			<button class ="logout-btn" onclick="logout();">로그아웃</button>
+		</div>
+	</div>
+</body>
+</html>
