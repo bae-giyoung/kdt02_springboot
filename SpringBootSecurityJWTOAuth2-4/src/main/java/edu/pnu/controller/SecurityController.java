@@ -1,5 +1,8 @@
 package edu.pnu.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -14,12 +17,12 @@ public class SecurityController {
 	
 	@GetMapping({"/", "/index"})
 	public String index() {
-		return "index";
+		return "http://localhost:3000/";
 	}
 	
 	@GetMapping("/login")
 	public String login() {
-		return "login.html";
+		return "http://localhost:3000/login";
 	}
 	
 	@GetMapping("/member")
@@ -40,6 +43,10 @@ public class SecurityController {
 	@PostMapping("/api/jwtcallback")
 	public ResponseEntity<?> apiCallback(@CookieValue String jwtToken) {
 		System.out.println("[SecurityController]jwtToken:" + jwtToken);
-		return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, JWTUtil.prefix + jwtToken).build();
+		Map<String, Object> username = new HashMap<String, Object>();
+		username.put("username", JWTUtil.getClaim(jwtToken, JWTUtil.usernameClaim));
+		return ResponseEntity.ok()
+				.header(HttpHeaders.AUTHORIZATION, JWTUtil.prefix + jwtToken)
+				.body(username); // 바디에 답아 보내는 것 수정해야함!!!!!!
 	}
 }

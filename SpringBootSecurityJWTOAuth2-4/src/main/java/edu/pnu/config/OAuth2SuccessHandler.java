@@ -56,7 +56,7 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 		response.addCookie(cookie);
 		
 		// callback.html로 리다이렉트 ==> 프론트가 있다면 Front의 callback을 호출
-		response.sendRedirect("/callback.html");
+		response.sendRedirect("http://localhost:3000/callback");
 	}
 
 }
