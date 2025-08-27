@@ -22,7 +22,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class JWTAuthorizationFilter extends OncePerRequestFilter {
-	private final MemberRepository memberRepository; // authwired.....? 인가 설정을 위해 사용자의 Role 정보를 읽기 위한 객체 설정
+	private final MemberRepository memberRepository; // 인가 설정을 위해 사용자의 Role 정보를 읽기 위한 객체 설정
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
