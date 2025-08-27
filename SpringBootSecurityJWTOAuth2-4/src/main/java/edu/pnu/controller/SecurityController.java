@@ -44,9 +44,9 @@ public class SecurityController {
 	public ResponseEntity<?> apiCallback(@CookieValue String jwtToken) {
 		System.out.println("[SecurityController]jwtToken:" + jwtToken);
 		Map<String, Object> username = new HashMap<String, Object>();
-		username.put("username", JWTUtil.getClaim(jwtToken, JWTUtil.usernameClaim));
+		username.put("username", JWTUtil.getClaim(jwtToken, JWTUtil.emailClaim));
 		return ResponseEntity.ok()
 				.header(HttpHeaders.AUTHORIZATION, JWTUtil.prefix + jwtToken)
-				.body(username); // 바디에 답아 보내는 것 수정해야함!!!!!!
+				.body(username);
 	}
 }
